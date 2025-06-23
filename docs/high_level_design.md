@@ -1,6 +1,7 @@
-# Creative Prompt Generator — High-Level Design
+# 🧰 Creative Prompt Generator — High-Level Design
+This design provides high level guidance and detail for the requirements detailed in spec.md. Low level design for the modules and methods is present in low_level_design.md
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 creative_prompt_gen/
@@ -18,7 +19,7 @@ creative_prompt_gen/
 
 ---
 
-## Prompt Generation
+## 🔄 Prompt Generation
 
 - Single function: `generate_prompt(prompt_type, themes, redraw_decks=None)`
 - Returns a structured `prompt` object:
@@ -42,7 +43,7 @@ creative_prompt_gen/
 
 ---
 
-## CardSource Abstraction
+## 🔌 CardSource Abstraction
 
 - `CardSource` interface defines:
   - `get_card_count(prompt_type, deck, theme)`
@@ -52,7 +53,7 @@ creative_prompt_gen/
 
 ---
 
-## Display
+## 🎨 Display
 
 - ASCII-rendered card boxes per deck using `display.py`
 - Horizontal row layout, one box per deck
@@ -64,7 +65,7 @@ creative_prompt_gen/
 
 ---
 
-## CLI Flow
+## 🧑‍💻 CLI Flow
 
 - Menu-based interaction using `input()`
 - Theme selection via numbered menu (`THEMES = ["default", "fantasy", "horror", "sci-fi"]`)
@@ -73,7 +74,7 @@ creative_prompt_gen/
 
 ---
 
-## Excluded for Now
+## ❌ Excluded for Now
 
 - Seeded randomness
 - File-based card definitions
@@ -83,7 +84,7 @@ creative_prompt_gen/
 
 ---
 
-## Design Goals Achieved
+## ✅ Design Goals Achieved
 
 | Goal                          | Met? |
 |-------------------------------|------|

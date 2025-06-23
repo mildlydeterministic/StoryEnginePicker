@@ -1,6 +1,10 @@
 """
+This module is part of the Creative Prompt Generator.
+Refer to `spec.md`, `high-level-design.md`, and `low-level-design.md` in the docs folder 
+under project root for full requirements and design details.
+
 Defines the CardSource interface for card data providers.
-"""
+""" 
 
 from abc import ABC, abstractmethod
 

@@ -1,8 +1,10 @@
-# Creative Prompt Generator — Requirements Specification
+# 📟 Creative Prompt Generator — Requirements Specification
 
 ## 1. **Project Overview**
 
 This is a **Python-based creative writing prompt generator** that builds prompts from custom card decks grouped by prompt type and theme. It will initially operate through a **basic command-line interface** using `input()` and ASCII-style output. Later enhancements may include UI elements and structured card data pulled from files or external storage.
+
+This spec is further refined and defined in high_level_design.md and low_level_design.md
 
 ---
 
@@ -38,7 +40,7 @@ Each card:
 
 - Belongs to **exactly one** theme
 - Is represented by an integer for now (e.g., `1` to `N`)
-- Is stored as a count (per deck, per theme) in `CARD_COUNTS`
+- Is stored as a count (per prompt type, per deck, per theme) in `CARD_COUNTS`
 
 ---
 
@@ -183,7 +185,21 @@ Redraw those decks using the same themes as before and re-render the full prompt
 
 - Python 3.10+
 - Uses only the standard library
-- `CARD_COUNTS` is defined in `config.py` with 0s as placeholders
+- `CARD_COUNTS` is defined in `config.py` using a nested structure:
+
+```python
+CARD_COUNTS = {
+    "world": {
+        "region": { "default": ..., "fantasy": ..., ... },
+        ...
+    },
+    "character": {
+        "agent": { "default": ..., "fantasy": ..., ... },
+        ...
+    },
+}
+```
+
 - Code is modular and extensible
 - All input is via `input()`, all output is text-based
 
@@ -198,10 +214,32 @@ Planned future enhancements:
 - Add web or rich terminal UI (e.g., `prompt_toolkit`, `textual`)
 - Support saving generated prompts
 - Introduce user-defined decks/themes via config files
+- Support multiple backends for card sources
 
 ---
 
-## 7. **Example Output (Full Prompt)**
+## 7. **Architecture and Design**
+
+### 7.1 Modules
+
+- `config.py`: constants like `THEME_LIST`, and `PROMPT_TYPE_DECKS`
+- `cards/base.py`: shared logic and interfaces (e.g., `parse_theme_selection`, `validate_deck`, `get_card_count`)
+- `cards/static.py`: hardcoded card source implementation, exposing `CARD_COUNTS`
+- `generator.py`: logic for generating full prompts or individual card draws
+- `display.py`: renders output in ASCII box layout
+- `cli.py`: orchestrates CLI interaction flow
+- `main.py`: CLI entry point
+
+### 7.2 Responsibilities
+
+- Prompt generation logic is cleanly separated from CLI and rendering
+- The card data source is encapsulated in `cards/`, with support for future extensions
+- Deck names are validated and normalized in shared logic
+- The system favors simplicity but leaves clear boundaries for enhancement
+
+---
+
+## 8. **Example Output (Full Prompt)**
 
 ```
 Prompt Type: Character
