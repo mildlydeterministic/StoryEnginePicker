@@ -48,9 +48,6 @@ class CardSource(ABC):
 def normalize_deck_name(deck_input: str, prompt_type: str) -> str:
     '''Normalize and validate a user-supplied deck name (case/plural-insensitive).'''
 
-def parse_theme_selection(user_input: str) -> list[str]:
-    '''Convert a comma-separated numeral input into a list of valid themes.'''
-
 def get_card_count(prompt_type: str, deck: str, theme: str) -> int:
     '''Wrapper to retrieve validated card counts from config.'''
 ```
@@ -99,7 +96,7 @@ def redraw_cards(source: CardSource, prompt_type: str, themes: list[str], existi
 
 ---
 
-## 🖼 `display_ascii.py` — Text Renderer
+## 🖼 `display.py` — Text Renderer
 
 ### Responsibilities
 
@@ -150,6 +147,9 @@ def deck_selection(prompt_type: str) -> str:
 
 def redraw_selection(available_decks: list[str]) -> list[str]:
     '''Prompt the user for which cards to redraw in a generated prompt.'''
+
+def parse_theme_selection(user_input: str) -> list[str]:
+    '''Convert a comma-separated numeral input into a list of valid themes.'''
 ```
 
 ---
