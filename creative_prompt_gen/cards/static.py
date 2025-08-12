@@ -20,7 +20,7 @@ CARD_COUNTS = {
         "namesake": { "default": 48, "fantasy": 12, "horror": 12, "sci-fi": 0, },
         "origin": { "default": 32, "fantasy": 8, "horror": 8, "sci-fi": 0, },
         "attribute": { "default": 48, "fantasy": 12, "horror": 12, "sci-fi": 0, },
-        "advent": { "default": 30, "fantasy": 8, "horror": 8, "sci-fi": 0, },
+        "advent": { "default": 32, "fantasy": 8, "horror": 8, "sci-fi": 0, },
     },
     "character": {
         "agent": { "default": 36, "fantasy": 12, "horror": 12, "sci-fi": 12, },
